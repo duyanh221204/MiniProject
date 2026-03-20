@@ -95,8 +95,45 @@ public class MainActivity extends AppCompatActivity implements RoomAdapter.OnRoo
 
     @Override
     public void onRoomClick(Room room) {
+        Intent intent = new Intent(this, EditRoomActivity.class);
+        intent.putExtra("ROOM_ID", room.getId());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRoomDetailClick(Room room) {
         Intent intent = new Intent(this, RoomDetailActivity.class);
         intent.putExtra("ROOM_ID", room.getId());
         startActivity(intent);
+    }
+
+    @Override
+    public void onRoomLongClick(Room room) {
+        new androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Xác nhận xóa")
+            .setMessage("Bạn có chắc chắn muốn xóa " + room.getName() + " không?")
+            .setPositiveButton("Xóa", (dialog, which) -> {
+                RoomRepository.getInstance().deleteRoom(room);
+                refreshList();
+            })
+            .setNegativeButton("Hủy", null)
+            .show();
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        refreshList();
+    }
+    
+    private void refreshList() {
+        allRooms = RoomRepository.getInstance().getRooms();
+        totalPages = (int) Math.ceil((double) allRooms.size() / itemsPerPage);
+        if (currentPage >= totalPages && totalPages > 0) {
+            currentPage = totalPages - 1;
+        } else if (totalPages == 0) {
+            currentPage = 0;
+        }
+        loadPage(currentPage);
     }
 }
