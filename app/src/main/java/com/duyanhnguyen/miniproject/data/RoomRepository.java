@@ -41,6 +41,12 @@ public class RoomRepository {
         return null;
     }
 
+    public void addRoom(Room room) {
+        roomList.add(room);
+    }
+
+    public String generateId() {
+        return "R" + String.format("%02d", roomList.size() + 1);
     public void deleteRoom(Room room) {
         roomList.remove(room);
     }
