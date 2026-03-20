@@ -47,5 +47,16 @@ public class RoomRepository {
 
     public String generateId() {
         return "R" + String.format("%02d", roomList.size() + 1);
+    public void deleteRoom(Room room) {
+        roomList.remove(room);
+    }
+    
+    public void updateRoom(Room room) {
+        for (int i = 0; i < roomList.size(); i++) {
+            if (roomList.get(i).getId().equals(room.getId())) {
+                roomList.set(i, room);
+                break;
+            }
+        }
     }
 }
