@@ -28,6 +28,8 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
 
     public interface OnRoomClickListener {
         void onRoomClick(Room room);
+        void onRoomDetailClick(Room room);
+        void onRoomLongClick(Room room);
     }
 
     public RoomAdapter(Context context, List<Room> roomList, OnRoomClickListener listener) {
@@ -75,7 +77,11 @@ public class RoomAdapter extends RecyclerView.Adapter<RoomAdapter.RoomViewHolder
         loadImageFromAssets(holder.imgRoom, "picture/" + room.getFolderName());
 
         holder.itemView.setOnClickListener(v -> listener.onRoomClick(room));
-        holder.btnDetails.setOnClickListener(v -> listener.onRoomClick(room));
+        holder.itemView.setOnLongClickListener(v -> {
+            listener.onRoomLongClick(room);
+            return true;
+        });
+        holder.btnDetails.setOnClickListener(v -> listener.onRoomDetailClick(room));
     }
 
     private void loadImageFromAssets(ImageView imageView, String folderPath) {
