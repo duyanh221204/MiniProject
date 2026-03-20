@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardBackgroundColor="#FFFFFC"
+    app:cardCornerRadius="32dp"
+    app:cardElevation="12dp"
+    android:outlineAmbientShadowColor="#D7C9B1"
+    android:outlineSpotShadowColor="#B39E81"
+    android:translationX="2dp"
+    android:translationY="2dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgRoom"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CircleImageView" />
+
+        <TextView
+            android:id="@+id/tvRoomName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btnDetails"
+            app:layout_constraintStart_toEndOf="@id/imgRoom"
+            app:layout_constraintTop_toTopOf="@id/imgRoom" />
+
+        <TextView
+            android:id="@+id/tvTenantName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@id/tvRoomName"
+            app:layout_constraintStart_toStartOf="@id/tvRoomName"
+            app:layout_constraintTop_toBottomOf="@id/tvRoomName" />
+
+        <ImageButton
+            android:id="@+id/btnDetails"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_white"
+            android:elevation="2dp"
+            android:src="@drawable/ic_back"
+            android:rotation="135"
+            android:tint="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imgRoom"
+            app:layout_constraintBottom_toBottomOf="@id/imgRoom" />
+
+        <TextView
+            android:id="@+id/tvPriceStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imgRoom" />
+
+        <View
+            android:id="@+id/colorBar"
+            android:layout_width="100dp"
+            android:layout_height="6dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_status_bar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvPriceStatus" />
+
+        <ImageButton
+            android:id="@+id/btnChat"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/bg_circle_white"
+            android:elevation="2dp"
+            android:src="@drawable/ic_chat"
+            android:tint="@color/text_secondary"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/colorBar"
+            app:layout_constraintEnd_toStartOf="@id/btnCall"
+            app:layout_constraintTop_toTopOf="@id/tvPriceStatus" />
+
+        <ImageButton
+            android:id="@+id/btnCall"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_circle_white"
+            android:elevation="2dp"
+            android:src="@drawable/ic_call"
+            android:tint="@color/text_secondary"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/colorBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tvPriceStatus" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
